@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		7FC4A1FB274154A300CB5C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A1FA274154A300CB5C4B /* AppDelegate.swift */; };
 		7FC4A1FD274154A300CB5C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A1FC274154A300CB5C4B /* SceneDelegate.swift */; };
-		7FC4A1FF274154A300CB5C4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A1FE274154A300CB5C4B /* ViewController.swift */; };
-		7FC4A202274154A300CB5C4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC4A200274154A300CB5C4B /* Main.storyboard */; };
 		7FC4A204274154A400CB5C4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC4A203274154A400CB5C4B /* Assets.xcassets */; };
 		7FC4A207274154A400CB5C4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC4A205274154A400CB5C4B /* LaunchScreen.storyboard */; };
+		7FC4A22527415B6F00CB5C4B /* WalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A22427415B6F00CB5C4B /* WalkthroughVC.swift */; };
+		7FC4A2272741609700CB5C4B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A2262741609700CB5C4B /* HomeVC.swift */; };
+		7FC4A22A2741617100CB5C4B /* PlayerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A2292741617100CB5C4B /* PlayerItemCell.swift */; };
+		7FC4A22D274163F800CB5C4B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A22C274163F800CB5C4B /* PlayerView.swift */; };
+		7FC4A23027416DE600CB5C4B /* VideoIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A22F27416DE600CB5C4B /* VideoIDModel.swift */; };
+		A2C0389E6C1B37C648D955FD /* Pods_playurl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB1713E146ADE44E7F03C7B /* Pods_playurl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AE0B50996F3F6980C564F53 /* Pods-playurl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playurl.release.xcconfig"; path = "Target Support Files/Pods-playurl/Pods-playurl.release.xcconfig"; sourceTree = "<group>"; };
+		72A2157E0537805E8671123B /* Pods-playurl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playurl.debug.xcconfig"; path = "Target Support Files/Pods-playurl/Pods-playurl.debug.xcconfig"; sourceTree = "<group>"; };
 		7FC4A1F7274154A300CB5C4B /* playurl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playurl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC4A1FA274154A300CB5C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FC4A1FC274154A300CB5C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7FC4A1FE274154A300CB5C4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7FC4A201274154A300CB5C4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7FC4A203274154A400CB5C4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FC4A206274154A400CB5C4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FC4A208274154A400CB5C4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FC4A22427415B6F00CB5C4B /* WalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVC.swift; sourceTree = "<group>"; };
+		7FC4A2262741609700CB5C4B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		7FC4A2292741617100CB5C4B /* PlayerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemCell.swift; sourceTree = "<group>"; };
+		7FC4A22C274163F800CB5C4B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		7FC4A22F27416DE600CB5C4B /* VideoIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIDModel.swift; sourceTree = "<group>"; };
+		8BB1713E146ADE44E7F03C7B /* Pods_playurl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playurl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2C0389E6C1B37C648D955FD /* Pods_playurl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +53,8 @@
 			children = (
 				7FC4A1F9274154A300CB5C4B /* playurl */,
 				7FC4A1F8274154A300CB5C4B /* Products */,
+				F29773C171EBB2EEE1EB45EF /* Pods */,
+				FF7797B9CF4E6C53A2AF921B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +69,91 @@
 		7FC4A1F9274154A300CB5C4B /* playurl */ = {
 			isa = PBXGroup;
 			children = (
-				7FC4A1FA274154A300CB5C4B /* AppDelegate.swift */,
-				7FC4A1FC274154A300CB5C4B /* SceneDelegate.swift */,
-				7FC4A1FE274154A300CB5C4B /* ViewController.swift */,
-				7FC4A200274154A300CB5C4B /* Main.storyboard */,
+				7FC4A22B274163EA00CB5C4B /* Custom View */,
+				7FC4A22127415B2C00CB5C4B /* Modules */,
+				7FC4A217274159E200CB5C4B /* Applications */,
 				7FC4A203274154A400CB5C4B /* Assets.xcassets */,
-				7FC4A205274154A400CB5C4B /* LaunchScreen.storyboard */,
 				7FC4A208274154A400CB5C4B /* Info.plist */,
 			);
 			path = playurl;
+			sourceTree = "<group>";
+		};
+		7FC4A217274159E200CB5C4B /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A205274154A400CB5C4B /* LaunchScreen.storyboard */,
+				7FC4A1FA274154A300CB5C4B /* AppDelegate.swift */,
+				7FC4A1FC274154A300CB5C4B /* SceneDelegate.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		7FC4A22127415B2C00CB5C4B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A22327415B3B00CB5C4B /* Walkthrough */,
+				7FC4A22227415B3300CB5C4B /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7FC4A22227415B3300CB5C4B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A22E27416DC800CB5C4B /* Model */,
+				7FC4A2282741616400CB5C4B /* Cells */,
+				7FC4A2262741609700CB5C4B /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7FC4A22327415B3B00CB5C4B /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A22427415B6F00CB5C4B /* WalkthroughVC.swift */,
+			);
+			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		7FC4A2282741616400CB5C4B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A2292741617100CB5C4B /* PlayerItemCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7FC4A22B274163EA00CB5C4B /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A22C274163F800CB5C4B /* PlayerView.swift */,
+			);
+			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		7FC4A22E27416DC800CB5C4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FC4A22F27416DE600CB5C4B /* VideoIDModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F29773C171EBB2EEE1EB45EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				72A2157E0537805E8671123B /* Pods-playurl.debug.xcconfig */,
+				6AE0B50996F3F6980C564F53 /* Pods-playurl.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF7797B9CF4E6C53A2AF921B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BB1713E146ADE44E7F03C7B /* Pods_playurl.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FC4A20B274154A400CB5C4B /* Build configuration list for PBXNativeTarget "playurl" */;
 			buildPhases = (
+				4251029D283E44DE26B664A8 /* [CP] Check Pods Manifest.lock */,
 				7FC4A1F3274154A300CB5C4B /* Sources */,
 				7FC4A1F4274154A300CB5C4B /* Frameworks */,
 				7FC4A1F5274154A300CB5C4B /* Resources */,
+				F4486C1715AA99D8C96B559D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,34 +218,71 @@
 			files = (
 				7FC4A207274154A400CB5C4B /* LaunchScreen.storyboard in Resources */,
 				7FC4A204274154A400CB5C4B /* Assets.xcassets in Resources */,
-				7FC4A202274154A300CB5C4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4251029D283E44DE26B664A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-playurl-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4486C1715AA99D8C96B559D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-playurl/Pods-playurl-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-playurl/Pods-playurl-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-playurl/Pods-playurl-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7FC4A1F3274154A300CB5C4B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FC4A1FF274154A300CB5C4B /* ViewController.swift in Sources */,
+				7FC4A22527415B6F00CB5C4B /* WalkthroughVC.swift in Sources */,
+				7FC4A2272741609700CB5C4B /* HomeVC.swift in Sources */,
 				7FC4A1FB274154A300CB5C4B /* AppDelegate.swift in Sources */,
+				7FC4A22D274163F800CB5C4B /* PlayerView.swift in Sources */,
 				7FC4A1FD274154A300CB5C4B /* SceneDelegate.swift in Sources */,
+				7FC4A22A2741617100CB5C4B /* PlayerItemCell.swift in Sources */,
+				7FC4A23027416DE600CB5C4B /* VideoIDModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7FC4A200274154A300CB5C4B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7FC4A201274154A300CB5C4B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7FC4A205274154A400CB5C4B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,6 +412,7 @@
 		};
 		7FC4A20C274154A400CB5C4B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72A2157E0537805E8671123B /* Pods-playurl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,7 +423,7 @@
 				INFOPLIST_FILE = playurl/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +441,7 @@
 		};
 		7FC4A20D274154A400CB5C4B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AE0B50996F3F6980C564F53 /* Pods-playurl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,7 +452,7 @@
 				INFOPLIST_FILE = playurl/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
