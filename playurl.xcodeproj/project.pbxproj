@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F08A1B72742C68400FA43E4 /* BottomSlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F08A1B62742C68400FA43E4 /* BottomSlideView.swift */; };
 		7FC4A1FB274154A300CB5C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A1FA274154A300CB5C4B /* AppDelegate.swift */; };
 		7FC4A1FD274154A300CB5C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A1FC274154A300CB5C4B /* SceneDelegate.swift */; };
 		7FC4A204274154A400CB5C4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC4A203274154A400CB5C4B /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		6AE0B50996F3F6980C564F53 /* Pods-playurl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playurl.release.xcconfig"; path = "Target Support Files/Pods-playurl/Pods-playurl.release.xcconfig"; sourceTree = "<group>"; };
 		72A2157E0537805E8671123B /* Pods-playurl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-playurl.debug.xcconfig"; path = "Target Support Files/Pods-playurl/Pods-playurl.debug.xcconfig"; sourceTree = "<group>"; };
+		7F08A1B62742C68400FA43E4 /* BottomSlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSlideView.swift; sourceTree = "<group>"; };
 		7FC4A1F7274154A300CB5C4B /* playurl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = playurl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC4A1FA274154A300CB5C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7FC4A1FC274154A300CB5C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				7FC4A22E27416DC800CB5C4B /* Model */,
 				7FC4A2282741616400CB5C4B /* Cells */,
 				7FC4A2262741609700CB5C4B /* HomeVC.swift */,
+				7F08A1B62742C68400FA43E4 /* BottomSlideView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC4A22527415B6F00CB5C4B /* WalkthroughVC.swift in Sources */,
+				7F08A1B72742C68400FA43E4 /* BottomSlideView.swift in Sources */,
 				7FC4A2272741609700CB5C4B /* HomeVC.swift in Sources */,
 				7FC4A1FB274154A300CB5C4B /* AppDelegate.swift in Sources */,
 				7FC4A22D274163F800CB5C4B /* PlayerView.swift in Sources */,
