@@ -1,0 +1,24 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.6)
+  - SnapKit (5.0.1)
+  - youtube-ios-player-helper (1.0.3)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - SnapKit (~> 5.0.0)
+  - youtube-ios-player-helper
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - SnapKit
+    - youtube-ios-player-helper
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
+
+PODFILE CHECKSUM: e58dd944fbb8a6616cf07dbb4c5698869a7c4ead
+
+COCOAPODS: 1.11.2
