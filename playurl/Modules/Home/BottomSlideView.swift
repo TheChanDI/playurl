@@ -11,6 +11,13 @@ class BottomSlideView: UIView {
     
     var addVideoClosure: (((id: String, name: String)) -> Void)?
     
+    lazy var topGrayView: UIView = {
+       let v = UIView()
+        v.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        v.layer.cornerRadius = 4
+        return v
+    }()
+    
     lazy var label: UILabel = {
        let label = UILabel()
         label.text = "Add Youtube video Id"
@@ -54,9 +61,11 @@ class BottomSlideView: UIView {
         super.init(frame: frame)
         
         layer.cornerRadius = 14
-        layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMinYCorner]
+        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backgroundColor = .white
         
+
+        configureTopGrayView()
         configurationLabel()
         configureIDTextfield()
         configureNameTextfield()
@@ -68,6 +77,18 @@ class BottomSlideView: UIView {
     }
     
     // MARK: UI Configuration
+    
+
+    
+    private func configureTopGrayView() {
+        addSubview(topGrayView)
+        topGrayView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.equalTo(40)
+            make.height.equalTo(5)
+            make.top.equalToSuperview().offset(4)
+        }
+    }
     
     private func configurationLabel() {
         addSubview(label)
@@ -81,10 +102,12 @@ class BottomSlideView: UIView {
         addSubview(addButton)
         addButton.addTarget(self, action: #selector(addVideo), for: .touchUpInside)
         addButton.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-10)
+//            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-10)
             make.centerX.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(40)
+            make.top.equalTo(nameTextField.snp.bottom).offset(30)
+    
         }
     }
     
@@ -111,4 +134,6 @@ class BottomSlideView: UIView {
         idTextField.text = ""
         nameTextField.text = ""
     }
+    
+
 }

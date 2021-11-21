@@ -17,6 +17,7 @@
 		7FC4A22A2741617100CB5C4B /* PlayerItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A2292741617100CB5C4B /* PlayerItemCell.swift */; };
 		7FC4A22D274163F800CB5C4B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A22C274163F800CB5C4B /* PlayerView.swift */; };
 		7FC4A23027416DE600CB5C4B /* VideoIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC4A22F27416DE600CB5C4B /* VideoIDModel.swift */; };
+		7FCB0C73274A9ED5001F2886 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCB0C72274A9ED5001F2886 /* SlidingView.swift */; };
 		A2C0389E6C1B37C648D955FD /* Pods_playurl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB1713E146ADE44E7F03C7B /* Pods_playurl.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		7FC4A2292741617100CB5C4B /* PlayerItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerItemCell.swift; sourceTree = "<group>"; };
 		7FC4A22C274163F800CB5C4B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		7FC4A22F27416DE600CB5C4B /* VideoIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoIDModel.swift; sourceTree = "<group>"; };
+		7FCB0C72274A9ED5001F2886 /* SlidingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
 		8BB1713E146ADE44E7F03C7B /* Pods_playurl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_playurl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				7FC4A22C274163F800CB5C4B /* PlayerView.swift */,
+				7FCB0C72274A9ED5001F2886 /* SlidingView.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				7FC4A1FB274154A300CB5C4B /* AppDelegate.swift in Sources */,
 				7FC4A22D274163F800CB5C4B /* PlayerView.swift in Sources */,
 				7FC4A1FD274154A300CB5C4B /* SceneDelegate.swift in Sources */,
+				7FCB0C73274A9ED5001F2886 /* SlidingView.swift in Sources */,
 				7FC4A22A2741617100CB5C4B /* PlayerItemCell.swift in Sources */,
 				7FC4A23027416DE600CB5C4B /* VideoIDModel.swift in Sources */,
 			);
@@ -425,6 +429,7 @@
 				DEVELOPMENT_TEAM = US8H2WJ2JK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = playurl/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = playURL;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -454,6 +459,7 @@
 				DEVELOPMENT_TEAM = US8H2WJ2JK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = playurl/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = playURL;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

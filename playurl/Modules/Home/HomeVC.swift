@@ -10,17 +10,25 @@ import SnapKit
 import youtube_ios_player_helper
 
 class HomeVC: UIViewController {
-    
- 
+
+    var popupView: SlidingView?
     
     var videoPlayer = YTPlayerView()
     
     var videoIdList: [VideoIDModel] = [.init(id: "LTbKXDNjQ3w", name: "Purana kura"), .init(id: "wy59p5FEDA8", name: "Love hurts"), .init(id: "EQJxzSZM_mI", name: "Lakhau hajarau")]
     
+    lazy var blackView: UIView = {
+       let v = UIView()
+        v.isHidden = true
+        v.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        return v
+    }()
+    
     lazy var tableView: UITableView = {
        let tv = UITableView()
         tv.delegate = self
         tv.dataSource = self
+        tv.allowsSelection = false
         tv.register(PlayerItemCell.self, forCellReuseIdentifier: PlayerItemCell.identifier)
         return tv
     }()
@@ -34,16 +42,27 @@ class HomeVC: UIViewController {
         view.backgroundColor = .white
         title = "playURL"
 
+        popupView = SlidingView(view: self.view)
+        
         // Do any additional setup after loading the view.
+        configureSwipeGesture()
         configurePlayerView()
         configureTableView()
         loadVideo()
+        configureBlackView()
         configureBottomSlide()
+      
     }
     
 
     
     // MARK: UI Configuration
+    
+    private func configureSwipeGesture() {
+        let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handleSwipe))
+        bottomSlide.addGestureRecognizer(swipeGesture)
+    }
+    
     private func configurePlayerView() {
         view.addSubview(videoPlayer)
         videoPlayer.snp.makeConstraints { make in
@@ -63,18 +82,33 @@ class HomeVC: UIViewController {
         }
     }
     
+    private func configureBlackView() {
+        view.addSubview(blackView)
+        blackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
     private func configureBottomSlide() {
         view.addSubview(bottomSlide)
-        bottomSlide.isHidden = true
         bottomSlide.addVideoClosure = { [weak self] (data) in
+            
+            if data.id == "" || data.name == "" {
+                self?.view.bringSubviewToFront((self?.popupView)!)
+//                self?.navigationController?.navigationBar.bringSubviewToFront()
+                self?.popupView?.startAnimation(with: .failure )
+                self?.popupView?.messageLabel.text = "Fields are empty!"
+                return
+            }
+            
             self?.videoIdList.append(.init(id: data.id, name: data.name))
             self?.tableView.reloadData()
-            self?.bottomSlide.isHidden = true
+            self?.closeView()
         }
         bottomSlide.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(300)
+            make.height.equalTo(0)
         }
     }
     
@@ -86,7 +120,53 @@ class HomeVC: UIViewController {
     }
     
     @objc func addVideoButtonTapped() {
-        bottomSlide.isHidden = false
+        blackView.isHidden = false
+        UIView.animate(withDuration: 0.4) {
+            self.bottomSlide.snp.updateConstraints { make in
+                make.height.equalTo(300)
+            }
+            self.view.layoutIfNeeded()
+        }
+
+    }
+    
+    @objc func handleSwipe(sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: bottomSlide)
+        guard translation.y >= 0 else {return}
+
+        bottomSlide.snp.updateConstraints { make in
+            make.height.equalTo(300 - translation.y)
+        }
+
+        if sender.state == .ended {
+
+            let dragVelocity = sender.velocity(in: bottomSlide)
+
+            if dragVelocity.y >= 1300 {
+                closeView()
+            }
+            else {
+                UIView.animate(withDuration: 0.2) { [weak self] in
+                    self?.bottomSlide.snp.updateConstraints { make in
+                        make.height.equalTo(300)
+                    }
+                    self?.view.layoutIfNeeded()
+                }
+
+            }
+        }
+    }
+    
+    func closeView() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
+            self?.bottomSlide.snp.updateConstraints({ make in
+                make.height.equalTo(0)
+            })
+            self?.view.layoutIfNeeded()
+       
+        }, completion: { _ in
+            self.blackView.isHidden = true
+        })
     }
     
 
@@ -131,9 +211,25 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 40
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row >= 0 && indexPath.row <= 2 {
+            return false
+        }
+        else {
+            return true
+        }
+    }
 
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return nil
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            videoIdList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+         
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
     
 }
