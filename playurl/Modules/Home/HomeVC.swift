@@ -28,7 +28,6 @@ class HomeVC: UIViewController {
        let tv = UITableView()
         tv.delegate = self
         tv.dataSource = self
-        tv.allowsSelection = false
         tv.register(PlayerItemCell.self, forCellReuseIdentifier: PlayerItemCell.identifier)
         return tv
     }()
@@ -43,7 +42,7 @@ class HomeVC: UIViewController {
         title = "playURL"
 
         popupView = SlidingView(view: self.view)
-        
+        loadRealmData()
         // Do any additional setup after loading the view.
         configureSwipeGesture()
         configurePlayerView()
@@ -100,7 +99,7 @@ class HomeVC: UIViewController {
                 self?.popupView?.messageLabel.text = "Fields are empty!"
                 return
             }
-            
+            self?.addToRealm(id: data.id, name: data.name)
             self?.videoIdList.append(.init(id: data.id, name: data.name))
             self?.tableView.reloadData()
             self?.closeView()
@@ -114,6 +113,19 @@ class HomeVC: UIViewController {
     
     // MARK: Methods
     
+    private func loadRealmData() {
+
+        let newData = LocalVideoService.shared.readData().map { item in
+            return VideoIDModel(id: item.videoId, name: item.videoName)
+        }
+        videoIdList.append(contentsOf: newData)
+        tableView.reloadData()
+    }
+    
+    private func addToRealm(id: String, name: String) {
+        LocalVideoService.shared.writeData(id: id, name: name)
+    }
+    
     private func loadVideo() {
         videoPlayer.load(withVideoId: "LTbKXDNjQ3w")
 
@@ -121,7 +133,7 @@ class HomeVC: UIViewController {
     
     @objc func addVideoButtonTapped() {
         blackView.isHidden = false
-        UIView.animate(withDuration: 0.4) {
+        UIView.animate(withDuration: 0.2) {
             self.bottomSlide.snp.updateConstraints { make in
                 make.height.equalTo(300)
             }
@@ -186,6 +198,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlayerItemCell.identifier, for: indexPath) as! PlayerItemCell
         cell.textLabel?.text = videoIdList[indexPath.row].name
+        cell.selectionStyle = .none
         return cell
     
     }
@@ -207,7 +220,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         button.addTarget(self, action: #selector(addVideoButtonTapped), for: .touchUpInside)
         return button
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 40
     }
@@ -223,9 +236,11 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
+            LocalVideoService.shared.deleteData(id: videoIdList[indexPath.row].id)
             videoIdList.remove(at: indexPath.row)
+         
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
          
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.

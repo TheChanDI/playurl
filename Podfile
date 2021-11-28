@@ -10,5 +10,6 @@ target 'playurl' do
 pod 'SnapKit', '~> 5.0.0'
 pod "youtube-ios-player-helper"
 pod 'IQKeyboardManagerSwift'
+pod 'RealmSwift', '10.14.0'
 
 end

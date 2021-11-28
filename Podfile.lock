@@ -1,24 +1,34 @@
 PODS:
   - IQKeyboardManagerSwift (6.5.6)
+  - Realm (10.14.0):
+    - Realm/Headers (= 10.14.0)
+  - Realm/Headers (10.14.0)
+  - RealmSwift (10.14.0):
+    - Realm (= 10.14.0)
   - SnapKit (5.0.1)
   - youtube-ios-player-helper (1.0.3)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
+  - RealmSwift (= 10.14.0)
   - SnapKit (~> 5.0.0)
   - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
     - IQKeyboardManagerSwift
+    - Realm
+    - RealmSwift
     - SnapKit
     - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  Realm: 95a120db10fa66d0f1d10bee4ce828177ae00090
+  RealmSwift: 4937e1b6f9b87bc25dc23883198807bf69e8cb76
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
 
-PODFILE CHECKSUM: e58dd944fbb8a6616cf07dbb4c5698869a7c4ead
+PODFILE CHECKSUM: 87f2cdd8117b9bebd54e04fced2aa886df04d7c2
 
 COCOAPODS: 1.11.2
