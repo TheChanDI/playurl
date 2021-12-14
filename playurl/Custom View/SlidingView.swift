@@ -26,7 +26,7 @@ final class SlidingView: UIView {
     ///height for the popup view. default is 100.
     private var popupHeight: CGFloat {
         get {
-            return 70
+            return 80
         }
     }
     

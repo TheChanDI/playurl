@@ -12,8 +12,11 @@ import youtube_ios_player_helper
 class HomeVC: UIViewController {
 
     var popupView: SlidingView?
+    var timerValue: (hr: Int, min: Int)?
     
     var videoPlayer = YTPlayerView()
+    var timerLabel = UILabel()
+    var timeService = TimerService()
     
     var videoIdList: [VideoIDModel] = [.init(id: "LTbKXDNjQ3w", name: "Purana kura"), .init(id: "wy59p5FEDA8", name: "Love hurts"), .init(id: "EQJxzSZM_mI", name: "Lakhau hajarau")]
     
@@ -33,6 +36,51 @@ class HomeVC: UIViewController {
     }()
     
     lazy var bottomSlide = BottomSlideView()
+    
+    lazy var timePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.datePickerMode = .countDownTimer
+        picker.backgroundColor = .white
+        picker.isHidden = true
+        return picker
+    }()
+    
+    lazy var doneButton: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("Start", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.isHidden = true
+        btn.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+        return btn
+    }()
+    
+    lazy var cancelButton: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("Cancel", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.isHidden = true
+        btn.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        btn.setTitleColor(.white, for: .normal)
+        return btn
+    }()
+    
+    lazy var formatter: DateFormatter = {
+       let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return formatter
+    }()
+    
+//    lazy var timerView: UIView = {
+//        let v = UIView()
+//        v.addSubview(timerLabel)
+//        timerLabel.text = "0h 0min"
+//        timerLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+//        timerLabel.snp.makeConstraints { make in
+//            make.center.equalToSuperview()
+//        }
+//
+//       return v
+//    }()
 
     // MARK: View life cycle
     
@@ -40,22 +88,46 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "playURL"
-
-        popupView = SlidingView(view: self.view)
+        
+        popupView = SlidingView(view: (navigationController?.view)!)
         loadRealmData()
         // Do any additional setup after loading the view.
+        configureNavigationBar()
         configureSwipeGesture()
         configurePlayerView()
         configureTableView()
         loadVideo()
         configureBlackView()
         configureBottomSlide()
+        configureUITimerPicker()
+        configureDoneButton()
+        configureCancelButton()
       
     }
     
 
     
     // MARK: UI Configuration
+    
+    private func configureNavigationBar() {
+        let timerButton = UIBarButtonItem(image: UIImage(systemName: "timer"), style: .plain, target: self, action: #selector(timerButtonTapped))
+        navigationItem.rightBarButtonItem = timerButton
+        
+        let timerView = UIView(frame: .init(x: 30, y: 0, width: 80, height: 30))
+        timerLabel = UILabel(frame: .init(x: 0, y: 0, width: 80, height: 30))
+        timerView.addSubview(timerLabel)
+        timerLabel.text = "0min"
+        timerLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: timerView)
+        
+    }
+    
+    @objc func timerButtonTapped() {
+        timePicker.isHidden = false
+        doneButton.isHidden = false
+        cancelButton.isHidden = false
+    }
     
     private func configureSwipeGesture() {
         let swipeGesture = UIPanGestureRecognizer(target: self, action: #selector(handleSwipe))
@@ -111,7 +183,74 @@ class HomeVC: UIViewController {
         }
     }
     
+    
+    private func configureDoneButton() {
+        view.addSubview(doneButton)
+        doneButton.addTarget(self, action: #selector(datePickerDoneButtonTapped), for: .touchUpInside)
+        doneButton.snp.makeConstraints { make in
+            make.bottom.equalTo(timePicker.snp.top)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(view.frame.width / 2)
+        }
+    }
+    
+    private func configureCancelButton() {
+        view.addSubview(cancelButton)
+        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        cancelButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.height.equalTo(50)
+            make.trailing.equalTo(doneButton.snp.leading)
+            make.bottom.equalTo(timePicker.snp.top)
+        }
+    }
+    
+
     // MARK: Methods
+    
+    @objc func cancelButtonTapped() {
+        timePicker.isHidden = true
+        doneButton.isHidden = true
+        cancelButton.isHidden = true
+    }
+    
+    
+    private func configureUITimerPicker() {
+     
+        view.addSubview(timePicker)
+        timePicker.addTarget(self, action: #selector(pickerChanged), for: .valueChanged)
+        timePicker.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            
+        }
+    }
+    
+    @objc func pickerChanged(sender: UIDatePicker) {
+        
+        let dateComponenets = Calendar.current.dateComponents([.hour, .minute], from: sender.date)
+        timerValue = (dateComponenets.hour!, dateComponenets.minute!)
+ 
+    }
+    
+    @objc func datePickerDoneButtonTapped() {
+        cancelButtonTapped()
+        popupView?.startAnimation(with: .information )
+        timerLabel.text = "\(timerValue?.min ?? 0)min"
+        popupView?.messageLabel.text = "Timer Started !"
+        timeService.startTime(time: timerValue?.min ?? 0)
+        timeService.updateTimer = {[weak self] value in
+
+                self?.timerLabel.text = "\(value)min"
+                if value == 0 {
+                    self?.popupView?.messageLabel.text = "Timer Ended!"
+                    self?.popupView?.startAnimation(with: .information )
+                    self?.videoPlayer.pauseVideo()
+                    exit(0)
+                }
+        }
+      
+    }
     
     private func loadRealmData() {
 
