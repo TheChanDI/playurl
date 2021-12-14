@@ -12,21 +12,21 @@ class BottomSlideView: UIView {
     var addVideoClosure: (((id: String, name: String)) -> Void)?
     
     lazy var topGrayView: UIView = {
-       let v = UIView()
+        let v = UIView()
         v.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         v.layer.cornerRadius = 4
         return v
     }()
     
     lazy var label: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "Add Youtube video Id"
         label.textAlignment = .center
         return label
     }()
     
     lazy var addButton: UIButton = {
-       let btn = UIButton()
+        let btn = UIButton()
         btn.setTitle("Add", for: .normal)
         btn.layer.cornerRadius = 4
         btn.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -34,7 +34,7 @@ class BottomSlideView: UIView {
     }()
     
     lazy var idTextField: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         tf.placeholder = "Add video ID"
         tf.layer.borderWidth = 2
         tf.layer.borderColor = UIColor.gray.cgColor
@@ -46,7 +46,7 @@ class BottomSlideView: UIView {
     }()
     
     lazy var nameTextField: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         tf.placeholder = "Add video name"
         tf.layer.borderWidth = 2
         tf.layer.borderColor = UIColor.gray.cgColor
@@ -57,6 +57,12 @@ class BottomSlideView: UIView {
         return tf
     }()
     
+    lazy var filterButton: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "text.viewfinder"), for: .normal)
+        return btn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -64,12 +70,12 @@ class BottomSlideView: UIView {
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backgroundColor = .white
         
-
         configureTopGrayView()
         configurationLabel()
         configureIDTextfield()
         configureNameTextfield()
         configureButton()
+        configureFilterButton()
     }
     
     required init?(coder: NSCoder) {
@@ -78,7 +84,7 @@ class BottomSlideView: UIView {
     
     // MARK: UI Configuration
     
-
+    
     
     private func configureTopGrayView() {
         addSubview(topGrayView)
@@ -102,12 +108,12 @@ class BottomSlideView: UIView {
         addSubview(addButton)
         addButton.addTarget(self, action: #selector(addVideo), for: .touchUpInside)
         addButton.snp.makeConstraints { make in
-//            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-10)
+            //            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-10)
             make.centerX.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(40)
             make.top.equalTo(nameTextField.snp.bottom).offset(30)
-    
+            
         }
     }
     
@@ -135,5 +141,29 @@ class BottomSlideView: UIView {
         nameTextField.text = ""
     }
     
-
+    private func configureFilterButton() {
+        addSubview(filterButton)
+        filterButton.addTarget(self, action: #selector(filterButtonTapp), for: .touchUpInside)
+        filterButton.snp.makeConstraints { make in
+            make.leading.equalTo(idTextField.snp.trailing).offset(10)
+            make.centerY.equalTo(idTextField)
+            
+        }
+    }
+    
+    @objc func filterButtonTapp() {
+        guard let url = URL(string: idTextField.text!) else {return}
+        if UIApplication.shared.canOpenURL(url) {
+            let urlString = url.absoluteString
+            let urlCharacterArr = urlString.components(separatedBy: "/")
+            print(urlCharacterArr)
+            idTextField.text = urlCharacterArr[3]
+        }
+        else {
+            print("cant open url!")
+        }
+        
+    }
+    
+    
 }

@@ -102,10 +102,11 @@ class HomeVC: UIViewController {
         configureUITimerPicker()
         configureDoneButton()
         configureCancelButton()
+        
+        
+        
       
     }
-    
-
     
     // MARK: UI Configuration
     
